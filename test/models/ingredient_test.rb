@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class IngredientTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+	test "save_ingrediente" do
+		ingrediente= Ingredient.new(name:"Granos Colombianos" , texture_number: 10  , flavour_try: "Amargo" , cream: nil )
+		assert ingrediente.save
+	end
+	
 end

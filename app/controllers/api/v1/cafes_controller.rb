@@ -12,14 +12,25 @@ class Api::V1::CafesController < ApplicationController
 		@cream = current_ingredient.cream unless current_ingredient.cream == nil
 		if current_ingredient.flavour_try != nil
 			@flavor= current_ingredient.flavour_try if current_ingredient.flavour_try[0..3].downcase < flavor[0..3].downcase
+		else
+			@flavor= flavor
 		end
 		### Comienza la recursividad del mezclador
+		puts("texture: "+texture.to_s+", cream: "+cream.to_s+", flavor: "+flavor.to_s)
 		if numero_ingredientes > 0
 			mix(numero_ingredientes-1, texture= @texture, cream= @cream, flavor= @flavor)
 		end
 		### Ya para finalizar comprobamos que se hicieron todos los mezclados y creamos el cafe en el modelo
 		if numero_ingredientes == 0
 			@cream = false if @cream == nil
+			### En caso de que se le suma un cafe debemos sumar sus propiedades
+			if params[:cafe_sumado] != "Ninguno"
+				cafe_sumado= Cafe.find_by_name(params[:cafe_sumado])
+				@texture= @texture+cafe_sumado.texture
+				@cream= true if cafe_sumado.cream==true
+				@flavor= cafe_sumado.flavor if cafe_sumado.flavor[0..3].downcase < @flavor[0..3].downcase
+			end
+			### Creamos el cafe con las variables ya procesadas
 			Cafe.create(flavor: @flavor, texture: @texture, cream: @cream )
 		end
 	end

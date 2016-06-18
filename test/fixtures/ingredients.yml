@@ -1,13 +1,17 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
+  name: Chocolate
   texture_number: 1
-  flavour_try: MyString
-  cream: false
+  flavour_try: Dulce
+  cream: nil
 
 two:
-  name: MyString
-  texture_number: 1
-  flavour_try: MyString
-  cream: false
+  name: Granos Colombianos
+  texture_number: 10
+  flavour_try: Amargo
+  cream: nil
+
+three:
+  name: Crema
+  texture_number: nil
+  flavour_try: nil
+  cream: true

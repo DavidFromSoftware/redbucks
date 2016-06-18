@@ -1,66 +1,77 @@
-	<style>
-		.ingredients{
-			margin-top:60px; 
-		}
-		.coffe_cal{
-			margin-top: 70px;
-			margin-left: 120px;
-		}
-		.ingredient_select{
-			margin-bottom: 20px;
-		}
-		.result_mix{
-			display:none;
-			margin-top: 50px;
-		}
-		.back_button{
-			margin-top: 50px;
-		}
-	</style>
-	<script>
-		$(document).ready(function(){
-			$(document).on('click', '.add_ingredient', function(){
-				$('.ingredient_select:last').clone().appendTo( ".ingredients" )
-				$('.ingredients').append('</br>')
-			})
-			$(document).on('click', '.coffe_cal', function(){
-				$('.coffe_cal').attr("disabled", true);
-				var map = [];
-				var ingredients_to_mix = [];
-				$('.ingredient_select option:selected').each(function() {
-				    ingredients_to_mix.push(this.textContent);
-				});
-				$.ajax({
-				  method: "POST",
-				  url: "/api/v1/cafes/mix",
-				  data: { ingredients: ingredients_to_mix},
-				  success: function(response){
-				  	if(response){
-				  		$( "#form_mix" ).fadeOut( "slow", function() {
-						    $('.result_mix').fadeIn("slow", function(){
-						    	$('.list_description').append('<li>'+response.data['texture_c']+'</li>')
-						    	$('.list_description').append('<li>'+response.data['flavor']+'</li>')
-						    	$('.list_description').append('<li>'+response.data['texture_c']+'</li>')
-						    });
-						});
-				  	}
-				  }
-				})
+<style>
+	.ingredients{
+		margin-top:60px; 
+	}
+	.sumar_cafe{
+		margin-top: 60px;
+	}
+	.coffe_cal{
+		margin-top: 70px;
+		margin-left: 120px;
+	}
+	.ingredient_select{
+		margin-bottom: 20px;
+	}
+	.result_mix{
+		display:none;
+		margin-top: 50px;
+	}
+	.back_button{
+		margin-top: 50px;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		$(document).on('click', '.add_ingredient', function(){
+			$('.ingredient_select:last').clone().appendTo( ".ingredients" )
+			$('.ingredients').append('</br>')
+		})
+		$(document).on('click', '.coffe_cal', function(){
+			$('.coffe_cal').attr("disabled", true);
+			var map = [];
+			var ingredients_to_mix = [];
+			$('.ingredient_select option:selected').each(function() {
+				   ingredients_to_mix.push(this.textContent);
 			});
+			$.ajax({
+				 method: "POST",
+				 url: "/api/v1/cafes/mix",
+				 data: { ingredients: ingredients_to_mix, cafe_sumado: $('.cafe_ingrediente option:selected').text() },
+				 success: function(response){
+				  if(response){
+				  	$( "#form_mix" ).fadeOut( "slow", function() {
+						   $('.result_mix').fadeIn("slow", function(){
+						    $('.list_description').append('<li>'+response.data['texture_c']+'</li>')
+						    $('.list_description').append('<li>'+response.data['flavor']+'</li>')
+						    $('.list_description').append('<li>'+response.data['cream_presence']+'</li>')
+						   });
+					});
+				  }
+				 }
+			})
 		});
-	</script>
+	});
+</script>
 <div class="container">
 	<h1>RedBucks</h1>
-	
+
 	<!-- Seccion de formulario para combinar el cafe -->
 	<div id="form_mix">
-		<div class="ingredients">
-			<!-- Por default sera 4 selects para elegir ingredientes -->
-			<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
-			<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
-			<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
-			<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
-		</div>	
+		<div class="row">
+			<div class="ingredients col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<!-- Por default sera 4 selects para elegir ingredientes -->
+				<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
+				<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
+				<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
+				<%= select_tag "ingredients",options_from_collection_for_select(Ingredient.all, "name", "name"),class: "ingredient_select"  %> </br>
+			</div>	
+			<% unless @cafes.blank? %>
+				<div class="sumar_cafe col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p>Sumar cafe antes preparado a estos ingredientes</p>
+					<%= select_tag "cafes",options_from_collection_for_select(Cafe.all, "id", "name"), prompt: "Ninguno" ,blank: true, class: "cafe_ingrediente"  %> 
+				</div>
+			<% end %>
+		</div>
 		<div>
 			<button class="add_ingredient">Agregar</button>
 			<button class="coffe_cal btn btn-default">Calcular Café</button>
@@ -75,5 +86,6 @@
 		</div>
 		<a href="javascript:history.go(0)" class="back_button btn btn-default">Volver</a>
 	</div>
+
 	
 </div>
