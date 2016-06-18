@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+## Ingredients Default
+
+Ingredient.create(name: "Chocolate", texture_number: 1 , flavour_try: "Dulce" , cream: nil)
+Ingredient.create(name: "Crema", texture_number: nil , flavour_try: nil , cream: true)
+Ingredient.create(name: "Granos Colombianos", texture_number: 10 , flavour_try: "Amargo" , cream: nil)
