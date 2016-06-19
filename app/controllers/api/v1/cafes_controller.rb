@@ -16,7 +16,6 @@ class Api::V1::CafesController < ApplicationController
 			@flavor= flavor
 		end
 		### Comienza la recursividad del mezclador
-		puts("texture: "+texture.to_s+", cream: "+cream.to_s+", flavor: "+flavor.to_s)
 		if numero_ingredientes > 0
 			mix(numero_ingredientes-1, texture= @texture, cream= @cream, flavor= @flavor)
 		end

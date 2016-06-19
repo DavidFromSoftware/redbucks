@@ -31,7 +31,9 @@ Seleccionas los ingredientes que quieres para tu cafe, el botón de "Agregar" so
 ![Segunda captura](https://raw.github.com/DavidFromSoftware/redbucks/master/public/captura2.png)
 
 Regresas a hacer otra mezcla con el botón "Volver", Como alternativa a esto tambien puedes añadir cafés anteriores a nuevas mezclas, esto lo que hace es sumar sus ingredientes:
-![Tercera captura](https://raw.github.com/DavidFromSoftware/redbucks/master/public/captura2.png)
+![Tercera captura](https://raw.github.com/DavidFromSoftware/redbucks/master/public/captura3.png)
+
+Y eso es! estas son las caracteristicas que ofrece el sistema.
 
 ### Contribuyendo 
 
