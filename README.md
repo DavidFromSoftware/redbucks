@@ -27,7 +27,9 @@ Si todo salio bien entramos a [localhost](http://localhost:3000/). Entrara direc
 Es sencillo al entrar a la mezcladora aparecera una pantalla como esta:
 ![Primera captura](https://raw.github.com/DavidFromSoftware/redbucks/master/public/captura1.png)
 
-Seleccionas los ingredientes que quieres para tu cafe, el botón de "Agregar" solo da la posibilidad de repetir ingredientes pues te dara las mismas opciones, una vez hecho esto le das click al botón de "Calcular Café", y pasara a otra pantalla con el resultado de tu mezcla.
+Seleccionas los ingredientes que quieres para tu cafe, el botón de "Agregar" solo da la posibilidad de repetir ingredientes pues te dara las mismas opciones, una vez hecho esto le das click al botón de "Calcular Café", y te dara el resultado
+
+
 ![Segunda captura](https://raw.github.com/DavidFromSoftware/redbucks/master/public/Captura2.png)
 
 Regresas a hacer otra mezcla con el botón "Volver", Como alternativa a esto tambien puedes añadir cafés anteriores a nuevas mezclas, esto lo que hace es sumar sus ingredientes:
