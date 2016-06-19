@@ -1,6 +1,6 @@
 class Cafe < ActiveRecord::Base
 
-
+	## Validar presencia de nombre, sabor y textura
 	validates :name, :presence => true
 	validates :flavor, :presence => true
 	validates :texture, :presence => true
@@ -20,6 +20,7 @@ class Cafe < ActiveRecord::Base
   		self.name= "Cafe nº"+numero
 		self.texture= self.texture/2 if self.texture < 15		
 		self.texture= self.texture*2 if self.texture >= 15
+		self.cream ||= false
   	end
 
 
