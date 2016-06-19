@@ -1,0 +1,16 @@
+es:
+  activerecord:
+    errors:
+      models: 
+        cafe: 
+          attributes:
+            flavor:
+              blank: "Sabor del cafe no puede quedar vacío"
+            texture:
+              blank: "Textura del cafe no puede quedar vacío"
+            name:
+              blank: "El nombre del cafe no puede quedar vacío"
+        ingredient: 
+          attributes:
+            name:
+              taken: "Este ingrediente ya esta registrado"

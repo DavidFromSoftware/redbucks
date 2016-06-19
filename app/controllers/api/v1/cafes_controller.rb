@@ -24,11 +24,13 @@ class Api::V1::CafesController < ApplicationController
 		if numero_ingredientes == 0
 			@cream = false if @cream == nil
 			### En caso de que se le suma un cafe debemos sumar sus propiedades
-			if params[:cafe_sumado] != "Ninguno"
+			if params[:cafe_sumado] 
 				cafe_sumado= Cafe.find_by_name(params[:cafe_sumado])
-				@texture= @texture+cafe_sumado.texture
-				@cream= true if cafe_sumado.cream==true
-				@flavor= cafe_sumado.flavor if cafe_sumado.flavor[0..3].downcase < @flavor[0..3].downcase
+				if cafe_sumado.present?
+					@texture= @texture+cafe_sumado.texture
+					@cream= true if cafe_sumado.cream==true
+					@flavor= cafe_sumado.flavor if cafe_sumado.flavor[0..3].downcase < @flavor[0..3].downcase
+				end
 			end
 			### Creamos el cafe con las variables ya procesadas
 			Cafe.create(flavor: @flavor, texture: @texture, cream: @cream )
