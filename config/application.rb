@@ -13,6 +13,9 @@ module Redbucks
         g.stylesheets false
         g.assets  false
     end
+
+    ## i18n por defecto: Espanol
+    config.i18n.default_locale = :es
     
     ## Permisos para protocolo http por medios externos
     config.middleware.insert_before 0, "Rack::Cors" do
