@@ -22,6 +22,12 @@ $ rails s
 
 Si todo salio bien entramos a [localhost](http://localhost:3000/). Entrara directamente a la mezcladora de Cafe. 
 
+Si quieres testear puedes probar con los siguientes comandos 
+```console
+$ rake db:test:prepare 
+$ rake test
+```
+
 ### Como usar
 
 Es sencillo al entrar a la mezcladora aparecera una pantalla como esta:
