@@ -11,7 +11,6 @@ independientemente de la sucursal en la que el cliente se encuentre.
 Lo primero que debemos hacer es clonar el repositorio despues dirigirnos a la carpeta del repositorio, instalar las gemas, migrar la base de datos y ejecutar un archivo semilla para tener ingredientes ya incorporados en el sistema y dejamos corriendo el servidor
 
 ```console
-$ git clone 
 $ git clone https://github.com/DavidFromSoftware/redbucks
 $ cd redbucks
 $ bundle install
